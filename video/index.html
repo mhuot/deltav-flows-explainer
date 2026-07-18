@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Delta-V telemetryd — explainer</title>
+<title>Delta-V flows — explainer</title>
 <style>
   :root {
     --ground: #0d1520;
@@ -43,32 +43,27 @@
           font-size: 74px; font-weight: 650; text-align: center; line-height: 1.25;
           opacity: 0; }
   #s1-q b { color: var(--accent); font-weight: 650; }
-  #s1-answer { position: absolute; left: 760px; top: 660px; display: block;
-               padding: 22px 44px; border: 3px solid var(--accent); border-radius: 999px;
-               font-size: 40px; font-weight: 600; opacity: 0; }
-  #s1-answer s { color: var(--ink-dim); }
-  #s1-answer b { color: var(--accent); font-weight: 700; }
+  #s1-sub { position: absolute; left: 0; right: 0; top: 680px; display: block;
+            text-align: center; font-size: 34px; letter-spacing: 3px;
+            color: var(--ink-dim); opacity: 0; }
 
-  /* ---- scene 2 : hollowed-out telemetryd ---- */
-  #s2-card { position: absolute; left: 460px; top: 260px; display: block;
-             width: 1000px; height: 460px; background: var(--panel);
-             border: 2px solid var(--hairline); border-radius: 24px; opacity: 0; }
-  #s2-card-head { position: absolute; left: 500px; top: 300px; display: block;
-                  font-size: 32px; color: var(--ink-dim); opacity: 0; }
-  .q-chip { position: absolute; display: block; width: 212px; height: 96px;
-            background: var(--panel-2); border: 2px solid var(--hairline);
-            border-radius: 14px; text-align: center; opacity: 0;
-            font-size: 26px; color: var(--ink-dim); padding-top: 16px; }
-  .q-chip small { display: block; font-size: 20px; letter-spacing: 3px;
-                  color: var(--ink-dim); margin-top: 8px; }
-  #s2-stamp { position: absolute; left: 700px; top: 608px; display: block;
-              padding: 14px 36px; border: 4px solid var(--accent); border-radius: 12px;
-              font-size: 40px; font-weight: 700; color: var(--accent);
-              letter-spacing: 4px; opacity: 0; background: var(--ground); }
-  #s2-bypass { position: absolute; left: 0; top: 0; display: block; }
-  #s2-bypass-path { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
-  #s2-bypass-lbl { position: absolute; left: 0; right: 0; top: 916px; display: block;
-                   text-align: center; font-size: 30px; color: var(--accent); opacity: 0; }
+  /* ---- scene 2 : pipeline overview ---- */
+  .proto2 { position: absolute; top: 270px; display: block; width: 220px; height: 64px;
+            background: var(--panel); border: 2px solid var(--hairline);
+            border-radius: 999px; font-size: 26px; font-weight: 600;
+            text-align: center; line-height: 60px; opacity: 0; }
+  #s2-pr1 { left: 460px; } #s2-pr2 { left: 720px; }
+  #s2-pr3 { left: 980px; } #s2-pr4 { left: 1240px; }
+  .step2 { position: absolute; top: 400px; display: block; width: 480px; height: 280px;
+           background: var(--panel); border: 2px solid var(--hairline);
+           border-radius: 24px; text-align: center; padding-top: 36px; opacity: 0; }
+  #s2-s1 { left: 150px; } #s2-s2 { left: 720px; } #s2-s3 { left: 1290px; }
+  .step2 i { display: block; width: 64px; height: 64px; margin: 0 auto;
+             border-radius: 14px; background: var(--accent); color: #0d1520;
+             font-size: 30px; font-weight: 700; line-height: 64px;
+             text-align: center; font-style: normal; }
+  .step2 b { display: block; font-size: 34px; font-weight: 650; margin-top: 18px; }
+  .step2 span { display: block; font-size: 25px; color: var(--ink-dim); margin-top: 12px; }
 
   /* ---- scene 3 : minion ---- */
   .pkt { position: absolute; top: 300px; display: block; width: 330px; height: 120px;
@@ -157,7 +152,7 @@
               text-align: center; font-size: 34px; opacity: 0; }
   #s6-count b { color: var(--accent); font-size: 42px; }
   #s6-sub { position: absolute; left: 1000px; top: 752px; display: block; width: 760px;
-            text-align: center; font-size: 24px; color: var(--ink-dim); opacity: 0; }
+            text-align: center; font-size: 22px; color: var(--ink-dim); opacity: 0; }
 
   /* ---- scene 7 : recap ---- */
   .node7 { position: absolute; top: 480px; display: block; width: 240px; height: 120px;
@@ -168,11 +163,6 @@
   #s7-n1 { left: 110px; } #s7-n2 { left: 400px; } #s7-n3 { left: 690px; }
   #s7-n4 { left: 980px; } #s7-n5 { left: 1270px; } #s7-n6 { left: 1560px; }
   #s7-n4 { border-color: var(--accent); }
-  #s7-td { position: absolute; left: 880px; top: 760px; display: block; width: 440px;
-           height: 100px; border: 2px dashed var(--hairline); border-radius: 16px;
-           text-align: center; padding-top: 18px; font-size: 28px; color: var(--ink-dim);
-           opacity: 0; }
-  #s7-td small { display: block; font-size: 21px; margin-top: 6px; }
   #s7-edges { position: absolute; left: 0; top: 0; display: block; }
   #s7-close { position: absolute; left: 0; right: 0; top: 220px; display: block;
               text-align: center; font-size: 64px; font-weight: 650; opacity: 0; }
@@ -185,40 +175,33 @@
 </style>
 </head>
 <body>
-<div id="stage" data-composition-id="deltav-telemetryd-explainer" data-start="0"
-     data-duration="80.15" data-width="1920" data-height="1080">
+<div id="stage" data-composition-id="deltav-flows-explainer" data-start="0"
+     data-duration="82.85" data-width="1920" data-height="1080">
 
   <div id="bg" class="fill"></div>
 
   <!-- scene 1 : hook -->
-  <section class="scene clip" id="scene-1" data-start="0" data-duration="8.65" data-track-index="1">
-    <div class="kicker" id="s1-kicker">DELTA-V ARCHITECTURE</div>
-    <div id="s1-q">A flow packet arrives at Delta-V.<br><b>Which service processes it?</b></div>
-    <div id="s1-answer"><s class="mono">telemetryd</s>&nbsp;&nbsp;<b>— not this one</b></div>
+  <section class="scene clip" id="scene-1" data-start="0" data-duration="8.53" data-track-index="1">
+    <div class="kicker" id="s1-kicker">DELTA-V FLOWS</div>
+    <div id="s1-q">A raw flow packet arrives at Delta-V.<br><b>How does it become a queryable record?</b></div>
+    <div id="s1-sub">three steps · one pipeline</div>
   </section>
 
-  <!-- scene 2 : hollowed-out telemetryd -->
-  <section class="scene clip" id="scene-2" data-start="8.65" data-duration="10.55" data-track-index="1">
-    <div class="stitle" id="s2-title" data-layout-allow-overlap>telemetryd: a hollowed-out shell</div>
-    <div id="s2-card" data-layout-allow-overlap></div>
-    <div id="s2-card-head" class="mono" data-layout-allow-overlap>core/daemon-boot-telemetryd · telemetryd-configuration.xml</div>
-    <div class="q-chip" id="s2-q1" style="left:500px;top:360px" data-layout-allow-overlap>JTI<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q2" style="left:736px;top:360px" data-layout-allow-overlap>OpenConfig<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q3" style="left:972px;top:360px" data-layout-allow-overlap>Netflow-5/9<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q4" style="left:1208px;top:360px" data-layout-allow-overlap>IPFIX<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q5" style="left:500px;top:480px" data-layout-allow-overlap>SFlow<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q6" style="left:736px;top:480px" data-layout-allow-overlap>NXOS<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q7" style="left:972px;top:480px" data-layout-allow-overlap>BMP<small>DISABLED</small></div>
-    <div class="q-chip" id="s2-q8" style="left:1208px;top:480px" data-layout-allow-overlap>Graphite<small>DISABLED</small></div>
-    <div id="s2-stamp" data-layout-allow-overlap>ALL 8 QUEUES OFF</div>
-    <svg id="s2-bypass" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-allow-overlap>
-      <path class="edge" id="s2-bypass-path" d="M 160 660 C 300 880, 1620 880, 1760 660"/>
-    </svg>
-    <div id="s2-bypass-lbl" data-layout-allow-overlap>the real pipeline goes around it</div>
+  <!-- scene 2 : pipeline overview -->
+  <section class="scene clip" id="scene-2" data-start="8.53" data-duration="12.03" data-track-index="1">
+    <div class="stitle" id="s2-title">One pipeline, three steps</div>
+    <div class="proto2" id="s2-pr1">Netflow-5</div>
+    <div class="proto2" id="s2-pr2">Netflow-9</div>
+    <div class="proto2" id="s2-pr3">IPFIX</div>
+    <div class="proto2" id="s2-pr4">sFlow</div>
+    <div class="step2" id="s2-s1"><i>01</i><b>Minion</b><span>listens on one UDP port</span></div>
+    <div class="step2" id="s2-s2"><i>02</i><b>minion-gateway</b><span>gRPC → Kafka topics</span></div>
+    <div class="step2" id="s2-s3"><i>03</i><b>flow-enricher</b><span>parse · enrich · publish</span></div>
+    <div class="caption" id="s2-cap">Kafka connects the stages · <b>ClickHouse</b> serves the queries</div>
   </section>
 
   <!-- scene 3 : minion -->
-  <section class="scene clip" id="scene-3" data-start="19.2" data-duration="11.35" data-track-index="1">
+  <section class="scene clip" id="scene-3" data-start="20.56" data-duration="11.35" data-track-index="1">
     <div class="chip" id="s3-chip">01</div>
     <div class="stitle" id="s3-title">Minion — one UDP port</div>
     <div class="pkt" id="s3-p1">Netflow-5<small>0x0005</small></div>
@@ -236,7 +219,7 @@
   </section>
 
   <!-- scene 4 : gateway -->
-  <section class="scene clip" id="scene-4" data-start="30.55" data-duration="10.55" data-track-index="1">
+  <section class="scene clip" id="scene-4" data-start="31.91" data-duration="10.55" data-track-index="1">
     <div class="chip" id="s4-chip">02</div>
     <div class="stitle" id="s4-title">minion-gateway — transport translation</div>
     <div id="s4-colhead-l">gRPC BIDI METHOD</div>
@@ -259,7 +242,7 @@
   </section>
 
   <!-- scene 5 : flow-enricher -->
-  <section class="scene clip" id="scene-5" data-start="41.1" data-duration="14.88" data-track-index="1">
+  <section class="scene clip" id="scene-5" data-start="42.46" data-duration="14.88" data-track-index="1">
     <div class="chip" id="s5-chip">03</div>
     <div class="stitle" id="s5-title">flow-enricher — parse · enrich · persist</div>
     <div class="topic5" id="s5-t1">…Telemetry-Netflow-5</div>
@@ -283,12 +266,12 @@
   </section>
 
   <!-- scene 6 : meaning -->
-  <section class="scene clip" id="scene-6" data-start="55.98" data-duration="13.15" data-track-index="1">
+  <section class="scene clip" id="scene-6" data-start="57.34" data-duration="14.62" data-track-index="1">
     <div class="stitle" id="s6-title">Why it's built this way</div>
     <div class="panel6" id="s6-left" data-layout-allow-overlap></div>
     <div class="panel6" id="s6-right" data-layout-allow-overlap></div>
     <div class="p6-title" id="s6-lt" data-layout-allow-overlap>Content-blind coupling</div>
-    <div class="p6-title" id="s6-rt" data-layout-allow-overlap>Scale = add replicas</div>
+    <div class="p6-title" id="s6-rt" data-layout-allow-overlap>Scale = pure Kafka</div>
     <div class="cb-row" id="s6-cb1" data-layout-allow-overlap>Minion <i>4-byte sniff only</i></div>
     <div class="cb-row" id="s6-cb2" data-layout-allow-overlap>gateway <i>routes, never parses</i></div>
     <div class="cb-row" id="s6-cb3" data-layout-allow-overlap><b>flow-enricher</b> <i>all protocol semantics</i></div>
@@ -304,13 +287,13 @@
     <div class="pcell" id="s6-p10" style="left:1244px;top:588px" data-layout-allow-overlap></div>
     <div class="pcell" id="s6-p11" style="left:1384px;top:588px" data-layout-allow-overlap></div>
     <div class="pcell" id="s6-p12" style="left:1524px;top:588px" data-layout-allow-overlap></div>
-    <div id="s6-count" data-layout-allow-overlap>4 topics × 4 partitions = <b>16</b> assignable</div>
-    <div id="s6-sub" data-layout-allow-overlap>no code or config change — Kafka consumer groups do the rest</div>
+    <div id="s6-count" data-layout-allow-overlap>4 partitions × 4 topics</div>
+    <div id="s6-sub" data-layout-allow-overlap>consumer groups spread them — enricher replicas · ClickHouse threads</div>
   </section>
 
   <!-- scene 7 : recap -->
-  <section class="scene clip" id="scene-7" data-start="69.13" data-duration="11.02" data-track-index="1">
-    <div id="s7-close">Delta-V telemetry, <b>explained</b>.</div>
+  <section class="scene clip" id="scene-7" data-start="71.96" data-duration="10.89" data-track-index="1">
+    <div id="s7-close">Delta-V flows, <b>explained</b>.</div>
     <div class="node7" id="s7-n1">Exporters<small>UDP 4729</small></div>
     <div class="node7" id="s7-n2">Minion<small>4-byte sniff</small></div>
     <div class="node7" id="s7-n3">gateway<small>gRPC → Kafka</small></div>
@@ -324,24 +307,23 @@
       <path class="edge" id="s7-e4" d="M 1220 540 L 1270 540"/>
       <path class="edge" id="s7-e5" d="M 1510 540 L 1560 540"/>
     </svg>
-    <div id="s7-td">telemetryd<small>extension seat · not in the flow path</small></div>
   </section>
 
   <!-- narration, track 7 -->
-  <audio id="aud-s1" data-start="0.5"   data-duration="7.95"  data-track-index="7" data-volume="1" src="assets/audio/s1_hook.wav"></audio>
-  <audio id="aud-s2" data-start="8.95"  data-duration="10.05" data-track-index="7" data-volume="1" src="assets/audio/s2_context.wav"></audio>
-  <audio id="aud-s3" data-start="19.5"  data-duration="10.85" data-track-index="7" data-volume="1" src="assets/audio/s3_step1.wav"></audio>
-  <audio id="aud-s4" data-start="30.85" data-duration="10.05" data-track-index="7" data-volume="1" src="assets/audio/s4_step2.wav"></audio>
-  <audio id="aud-s5" data-start="41.4"  data-duration="14.38" data-track-index="7" data-volume="1" src="assets/audio/s5_step3.wav"></audio>
-  <audio id="aud-s6" data-start="56.28" data-duration="12.65" data-track-index="7" data-volume="1" src="assets/audio/s6_meaning.wav"></audio>
-  <audio id="aud-s7" data-start="69.43" data-duration="9.8"   data-track-index="7" data-volume="1" src="assets/audio/s7_recap.wav"></audio>
+  <audio id="aud-s1" data-start="0.5"   data-duration="7.83"  data-track-index="7" data-volume="1" src="assets/audio/s1_hook.wav"></audio>
+  <audio id="aud-s2" data-start="8.83"  data-duration="11.53" data-track-index="7" data-volume="1" src="assets/audio/s2_context.wav"></audio>
+  <audio id="aud-s3" data-start="20.86" data-duration="10.85" data-track-index="7" data-volume="1" src="assets/audio/s3_step1.wav"></audio>
+  <audio id="aud-s4" data-start="32.21" data-duration="10.05" data-track-index="7" data-volume="1" src="assets/audio/s4_step2.wav"></audio>
+  <audio id="aud-s5" data-start="42.76" data-duration="14.38" data-track-index="7" data-volume="1" src="assets/audio/s5_step3.wav"></audio>
+  <audio id="aud-s6" data-start="57.64" data-duration="14.12" data-track-index="7" data-volume="1" src="assets/audio/s6_meaning.wav"></audio>
+  <audio id="aud-s7" data-start="72.26" data-duration="9.65"  data-track-index="7" data-volume="1" src="assets/audio/s7_recap.wav"></audio>
   <!-- music bed, track 8 -->
-  <audio id="aud-music" data-start="0" data-duration="80.15" data-track-index="8" data-volume="0.11" src="assets/audio/music.wav"></audio>
+  <audio id="aud-music" data-start="0" data-duration="82.85" data-track-index="8" data-volume="0.11" src="assets/audio/music.wav"></audio>
 
   <script src="assets/gsap.min.js"></script>
   <script>
     // Scene starts — must match the section data-start attributes above.
-    const S1 = 0, S2 = 8.65, S3 = 19.2, S4 = 30.55, S5 = 41.1, S6 = 55.98, S7 = 69.13;
+    const S1 = 0, S2 = 8.53, S3 = 20.56, S4 = 31.91, S5 = 42.46, S6 = 57.34, S7 = 71.96;
 
     const tl = gsap.timeline({ paused: true });
 
@@ -350,27 +332,26 @@
       { opacity: 1, duration: 0.7, ease: "power1.out" }, S1 + 0.3);
     tl.fromTo("#s1-q", { opacity: 0, y: 28 },
       { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, S1 + 0.5);
-    // "it isn't telemetry d" beat lands near the end of the clip
-    tl.fromTo("#s1-answer", { opacity: 0, scale: 0.88 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, S1 + 6.3);
+    // "three steps, one pipeline" beat ≈ 5.5 s into the clip
+    tl.fromTo("#s1-sub", { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, S1 + 5.6);
 
-    // scene 2 — hollowed-out shell
+    // scene 2 — pipeline overview
     tl.fromTo("#s2-title", { opacity: 0, x: -24 },
       { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, S2 + 0.3);
-    tl.fromTo("#s2-card", { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, S2 + 0.5);
-    tl.fromTo("#s2-card-head", { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "none" }, S2 + 0.9);
-    tl.fromTo(["#s2-q1","#s2-q2","#s2-q3","#s2-q4","#s2-q5","#s2-q6","#s2-q7","#s2-q8"],
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "power1.out" }, S2 + 1.3);
-    // "all eight of its queues are disabled" ≈ 4.5 s into the clip
-    tl.fromTo("#s2-stamp", { opacity: 0, scale: 1.5, rotation: -6 },
-      { opacity: 1, scale: 1, rotation: -6, duration: 0.45, ease: "power3.in" }, S2 + 4.6);
-    // "the real pipeline bypasses it entirely" ≈ 6.8 s in
-    tl.to("#s2-bypass-path", { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" }, S2 + 7.0);
-    tl.fromTo("#s2-bypass-lbl", { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "none" }, S2 + 8.2);
+    // protocols are listed first ≈ 0.5–3.5 s of the clip
+    tl.fromTo(["#s2-pr1","#s2-pr2","#s2-pr3","#s2-pr4"], { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.4, stagger: 0.35, ease: "power1.out" }, S2 + 0.8);
+    // "the Minion listens" ≈ 6 s, "gateway routes" ≈ 7.2 s, "enricher" ≈ 8.4 s
+    tl.fromTo("#s2-s1", { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, S2 + 5.8);
+    tl.fromTo("#s2-s2", { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, S2 + 7.0);
+    tl.fromTo("#s2-s3", { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, S2 + 8.2);
+    // "Kafka connects the stages" ≈ 10 s in
+    tl.fromTo("#s2-cap", { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, S2 + 10.1);
 
     // scene 3 — minion
     tl.fromTo("#s3-chip", { opacity: 0, scale: 0.9 },
@@ -441,43 +422,45 @@
     // "content blind — only the enricher understands flows" ≈ 1.5–5.5 s
     tl.fromTo(["#s6-cb1","#s6-cb2","#s6-cb3"], { opacity: 0, x: -18 },
       { opacity: 1, x: 0, duration: 0.5, stagger: 0.5, ease: "power2.out" }, S6 + 1.8);
-    // "scaling is just replicas" ≈ 6 s in
+    // "scaling is pure Kafka" ≈ 5.8 s in
     tl.fromTo(["#s6-right","#s6-rt"], { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, S6 + 6.0);
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, S6 + 5.8);
+    // "four partitions per topic" ≈ 7.5 s in
     tl.fromTo(["#s6-p1","#s6-p2","#s6-p3","#s6-p4","#s6-p5","#s6-p6",
                "#s6-p7","#s6-p8","#s6-p9","#s6-p10","#s6-p11","#s6-p12"],
       { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 0.3, stagger: 0.14, ease: "power1.out" }, S6 + 6.8);
-    // "sixteen partitions" ≈ 9.5 s in
+      { opacity: 1, scale: 1, duration: 0.3, stagger: 0.14, ease: "power1.out" }, S6 + 7.4);
+    // "consumer groups spread them" ≈ 9.2 s in
     tl.fromTo("#s6-count", { opacity: 0, y: 12 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, S6 + 9.4);
     tl.fromTo("#s6-sub", { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "none" }, S6 + 10.6);
+      { opacity: 1, duration: 0.5, ease: "none" }, S6 + 10.8);
 
     // scene 7 — recap: nodes land as narration names them
-    // "So: Minion, gateway, Kafka, enricher, ClickHouse." ≈ 0.3–4.3 s of clip
+    // "Minion sniffs / gateway routes / Kafka carries / enricher / ClickHouse" ≈ 0.6–7 s
     tl.fromTo("#s7-n1", { opacity: 0, y: 18 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 0.4);
     tl.fromTo("#s7-n2", { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 1.0);
+      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 1.1);
     tl.fromTo("#s7-n3", { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 1.7);
+      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 2.0);
     tl.fromTo("#s7-n4", { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 2.4);
+      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 2.8);
     tl.fromTo("#s7-n5", { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 3.1);
+      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 3.7);
     tl.fromTo("#s7-n6", { opacity: 0, y: 18 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 3.8);
-    tl.to(["#s7-e1","#s7-e2","#s7-e3","#s7-e4","#s7-e5"],
-      { strokeDashoffset: 0, duration: 0.4, stagger: 0.55, ease: "power1.inOut" }, S7 + 1.0);
-    // "telemetry d keeps its seat" ≈ 4.8 s in
-    tl.fromTo("#s7-td", { opacity: 0, y: 14 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, S7 + 5.0);
+      { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, S7 + 5.3);
+    tl.to("#s7-e1", { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, S7 + 0.9);
+    tl.to("#s7-e2", { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, S7 + 1.7);
+    tl.to("#s7-e3", { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, S7 + 2.5);
+    tl.to("#s7-e4", { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, S7 + 3.3);
+    tl.to("#s7-e5", { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, S7 + 4.9);
+    // "Delta V flows, explained" ≈ 7.5 s in
     tl.fromTo("#s7-close", { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, S7 + 7.2);
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, S7 + 7.4);
 
     window.__timelines = window.__timelines || {};
-    window.__timelines["deltav-telemetryd-explainer"] = tl;
+    window.__timelines["deltav-flows-explainer"] = tl;
   </script>
 </div>
 </body>

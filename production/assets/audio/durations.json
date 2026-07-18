@@ -1,9 +1,9 @@
 {
-  "s1_hook": 7.95,
-  "s2_context": 10.05,
+  "s1_hook": 7.825,
+  "s2_context": 11.525,
   "s3_step1": 10.85,
   "s4_step2": 10.05,
   "s5_step3": 14.375,
-  "s6_meaning": 12.65,
-  "s7_recap": 9.8
+  "s6_meaning": 14.125,
+  "s7_recap": 9.65
 }

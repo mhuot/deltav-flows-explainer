@@ -1,4 +1,22 @@
-# Self-review — explainer-v2.mp4 (2026-07-18)
+# Self-review — explainer-v3.mp4 (2026-07-18)
+
+v3 reframes the video as "Delta-V flows, explained": telemetryd removed
+entirely (SME: not part of the Flows conversation). Scene 1 is now a
+direct how-does-it-work hook, scene 2 a three-step pipeline overview,
+scene 7 a clean recap with no telemetryd box, and scene 6 attributes
+partition scaling to "pure Kafka" (4 partitions/topic; consumer groups
+spread them — enricher replicas and ClickHouse's 4 consumer threads per
+topic alike), per the SME's second reply.
+
+v3 gate evidence: s1/s2/s6/s7 re-synthesized (total narration 78.40 s,
+video 82.85 s); lint/check 0 errors, 39/39 contrast pass; scenes 1, 2, 6,
+7 snapshotted and viewed (v3-at-*.png); ffprobe duration 82.880 s (+0.030
+vs plan, within ±0.1); max_volume −7.5 dB; QA frames qa-v3-*.png viewed.
+Composition id renamed to deltav-flows-explainer.
+
+---
+
+# Self-review — explainer-v2.mp4 (2026-07-18) [superseded]
 
 v2 corrects v1 per SME feedback (SME): scene-5 narration and visuals now
 show flow-enricher as an SCS processor producing enriched flows to the

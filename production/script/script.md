@@ -1,4 +1,25 @@
-# Script — LOCKED v2 (2026-07-18)
+# Script — LOCKED v3 (2026-07-18)
+
+v3 reframes the video as "Delta-V flows, explained" — telemetryd removed
+entirely per the SME ("We shouldn't mention Telemetryd in the Flows
+conversation"). Scenes 1, 2, 6, 7 rewritten; 3–5 unchanged from v2.
+Measured narration 78.40 s → total 82.85 s.
+
+| Scene | v3 narration (TTS text, verbatim) | Words |
+|-------|-----------------------------------|-------|
+| s1_hook | How does Delta V turn a raw flow packet into a queryable record? Three steps, one pipeline — starting at the network edge. | 22 |
+| s2_context | Every flow — Netflow five and nine, I P Fix, s Flow — rides the same three step pipeline: the Minion listens, the gateway routes, the enricher makes sense of it. Kafka connects the stages. | 34 |
+| s6_meaning | The payoff: the coupling is content blind — only the enricher understands flows. And scaling is pure Kafka: four partitions per topic, and consumer groups spread them — enricher replicas and ClickHouse's consumer threads alike. | 35 |
+| s7_recap | So: the Minion sniffs, the gateway routes, Kafka carries, the enricher parses and enriches, and ClickHouse answers the queries. Delta V flows, explained. | 24 |
+
+s6 rationale: the SME clarified the partition scaling is "pure Kafka" —
+the broker's 4 partitions per topic let any consumer group spread work,
+including ClickHouse's 4 consumer threads per topic; the narration now
+attributes it to Kafka rather than to any one service's design.
+
+---
+
+# Script — LOCKED v2 (2026-07-18) [superseded]
 
 Revision history: v1 locked 2026-07-17. v2 changes ONLY s5_step3, per SME
 feedback (SME): the enricher does not write to ClickHouse directly — it is

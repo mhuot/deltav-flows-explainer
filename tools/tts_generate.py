@@ -27,14 +27,14 @@ SPEECH_SPEED = 1.1
 SCENE_NARRATIONS: list[tuple[str, str]] = [
     (
         "s1_hook",
-        "When a router sends a flow packet into Delta V, which service "
-        "actually processes it? Here's the surprise: it isn't telemetry d.",
+        "How does Delta V turn a raw flow packet into a queryable record? "
+        "Three steps, one pipeline — starting at the network edge.",
     ),
     (
         "s2_context",
-        "Delta V still ships telemetry d, but as a hollowed out shell: all "
-        "eight of its queues are disabled. The real pipeline bypasses it "
-        "entirely, in three steps.",
+        "Every flow — Netflow five and nine, I P Fix, s Flow — rides the "
+        "same three step pipeline: the Minion listens, the gateway routes, "
+        "the enricher makes sense of it. Kafka connects the stages.",
     ),
     (
         "s3_step1",
@@ -58,14 +58,15 @@ SCENE_NARRATIONS: list[tuple[str, str]] = [
     (
         "s6_meaning",
         "The payoff: the coupling is content blind — only the enricher "
-        "understands flows. And scaling is just replicas: Kafka spreads "
-        "sixteen partitions across the group, with no code or config changes.",
+        "understands flows. And scaling is pure Kafka: four partitions per "
+        "topic, and consumer groups spread them — enricher replicas and "
+        "ClickHouse's consumer threads alike.",
     ),
     (
         "s7_recap",
-        "So: Minion, gateway, Kafka, enricher, ClickHouse. Telemetry d keeps "
-        "its seat for future protocols — but today, it just watches the "
-        "traffic go by.",
+        "So: the Minion sniffs, the gateway routes, Kafka carries, the "
+        "enricher parses and enriches, and ClickHouse answers the queries. "
+        "Delta V flows, explained.",
     ),
 ]
 

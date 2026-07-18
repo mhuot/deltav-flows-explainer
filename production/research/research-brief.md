@@ -43,11 +43,17 @@ statement maps to a line in that document.
   on this point. Applied in v2 (scene 5 narration + scenes 5/7 visuals).
 - **Recap diagram:** no connector between Kafka and telemetryd — telemetryd
   is not in the flow path at all. Applied in v2 (spur removed).
-- **Open question:** The SME also said the 4-partitions scaling description
-  "is the ClickHouse design, not Delta-V", which conflicts with the doc's
-  Scaling-ceilings section (4 topics × 4 partitions = 16 for
-  flow-enricher's group, `KAFKA_NUM_PARTITIONS: 4` in deploy/compose.yml).
-  Scene 6 unchanged pending his confirmation.
+- **Resolved (second SME reply, 2026-07-18):** the partition scaling is
+  "pure Kafka" — the broker creates 4 partitions per topic, which lets any
+  consumer group spread work across them; ClickHouse runs 4 consumer
+  threads per topic (one per partition), and enricher replicas divide the
+  raw-flow partitions the same way. Applied in v3 (scene 6 reworded to
+  attribute scaling to Kafka, not any one service). ClickHouse is being
+  added to the doc; the doc is also being updated.
+- **v3 scope change:** per the SME, telemetryd should not appear in the
+  Flows conversation at all — the video is reframed as "Delta-V flows,
+  explained" with scenes 1, 2, and 7 rewritten and every telemetryd
+  reference removed. Facts 1, 9, 10 are no longer used by the script.
 
 ## Sensitivity
 

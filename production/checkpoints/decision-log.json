@@ -65,6 +65,18 @@
       "approved_by": "user (relayed SME feedback and requested v2)"
     },
     {
+      "category": "explainer_shape",
+      "subject": "Telemetryd framing",
+      "selected": "v3: video reframed as 'Delta-V flows, explained' — telemetryd removed entirely (scenes 1, 2, 7 rewritten); scene 6 scaling attributed to 'pure Kafka' per SME's second reply (4 partitions/topic, consumer groups spread them, incl. ClickHouse's 4 threads/topic)",
+      "options_considered": [
+        "v3: flows-only framing, no telemetryd",
+        "v1/v2: 'not telemetryd' hook with vestigial-shell scene"
+      ],
+      "rejected_because": "SME direction: the conversation has narrowed to Flows and telemetryd should not be mentioned in it; the negative-space hook also spent ~20 s of an 80 s video on a daemon that does nothing.",
+      "confidence": 0.9,
+      "approved_by": "user request + SME (2026-07-18)"
+    },
+    {
       "category": "approval_gates",
       "subject": "Approval gates",
       "selected": "Autonomous run: script self-locked, validation ladder + snapshot review + post-render self-review as gates; user reviews the finished master",
